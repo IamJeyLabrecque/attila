@@ -12,9 +12,29 @@
 	<link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
 
 	{{ghost_head}}
+
+	<style>
+		:root {
+			--color-primary: #6da24a;
+		  --color-primary-active: #51862f;
+		}
+	</style>
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-KFCRVHT');</script>
+	<!-- End Google Tag Manager -->
 </head>
 
 <body class="{{body_class}}">
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KFCRVHT"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<div class="nav-header">
 		<nav class="nav-wrapper" aria-label="{{t "Main"}}">
@@ -26,15 +46,14 @@
 				{{navigation}}
 				<ul class="nav-side">
 					{{#if @site.twitter}}
-					<li class="nav-twitter"><a aria-label="Twitter" href="{{twitter_url}}" title="{{@site.twitter}}" target="_blank"><i class="icon icon-twitter" aria-hidden="true"></i></a></li>
+					<li class="nav-twitter"><a aria-label="Twitter" href="https://twitter.com/iamjeylabrecque" title="Twitter" target="_blank"><i class="icon icon-twitter" aria-hidden="true"></i></a></li>
 					{{/if}}
 					{{#if @site.facebook}}
-					<li class="nav-facebook"><a aria-label="Facebook" href="{{facebook_url}}" title="{{@site.facebook}}" target="_blank"><i class="icon icon-facebook" aria-hidden="true"></i></a></li>
+					<li class="nav-linkedin"><a aria-label="LinkedIn" href="https://www.linkedin.com/in/iamjeylabrecque" title="LinkedIn" target="_blank"><i class="icon icon-linkedin" aria-hidden="true"></i></a></li>
 					{{/if}}
 					{{#if @labs.subscribers}}
 					<li class="nav-subscribe"><a title="{{t "Subscribe"}}" href="{{@site.url}}/subscribe/" target="_blank"><i class="icon icon-mail" aria-hidden="true"></i></a></li>
 					{{/if}}
-					<li class="nav-rss"><a title="RSS" href="{{@site.url}}/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></li>
 					<li class="nav-search" style="display: none;"><a title="{{t "Search"}}"><i class="icon icon-search" aria-hidden="true"></i></a></li>
 				</ul>
 		</nav>
@@ -91,9 +110,9 @@
 				{{#if @site.secondary_navigation}}
 				{{navigation type="secondary"}}
 				{{else}}
-				<span class="nav-copy">{{@site.title}} &copy; {{date format='YYYY'}}</span>
+				<span class="nav-copy">:)</span>
 				{{/if}}
-				<span class="nav-credits">{{t "Published with"}} <a href="https://ghost.org">Ghost</a> &bull; {{t "Theme" }} <a href="https://github.com/zutrinken/attila">Attila</a></span>
+				<span class="nav-credits">Jeffrey Labrecque &copy; {{date format='YYYY'}}</span>
 			</nav>
 		</div>
 
@@ -101,6 +120,13 @@
 
 	{{!-- Load basic scripts --}}
 	<script type="text/javascript" src="{{asset "js/script.js"}}"></script>
+
+	{{!-- Force External Links to open in a new tab --}}
+	<script type="text/javascript">
+		jQuery(document.links).filter(function() {
+			return this.hostname != window.location.hostname;
+		}).attr('target', '_blank').attr('rel', 'noopener noreferrer');;
+	</script>
 
 	{{!-- Load scripts from other template files --}}
 	{{{block "scripts"}}}
